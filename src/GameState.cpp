@@ -12,10 +12,10 @@ void GameState::ExitState(){}
 
 void GameState::Render(sf::RenderWindow& window){}
 
-void GameState::KeyPressed(sf::Event event){}
+void GameState::KeyPressed(const sf::Event::KeyPressed* event){}
 
-void GameState::KeyReleased(sf::Event event){}
+void GameState::KeyReleased(const sf::Event::KeyReleased* event){}
 
-void GameState::MouseButtonPressed(sf::Event event){}
+void GameState::MouseButtonPressed(const sf::Event::MouseButtonPressed* event){}
 
-void GameState::MouseButtonReleased(sf::Event event){}
+void GameState::MouseButtonReleased(const sf::Event::MouseButtonReleased* event){}

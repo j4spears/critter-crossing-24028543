@@ -17,19 +17,17 @@ class Game
   bool init();
   void update(float dt);
   void render();
-  void mouseButtonPressed(const sf::Event::MouseButtonPressed* event);
-  void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
   void keyPressed(const sf::Event::KeyPressed* event);
   void keyReleased(const sf::Event::KeyReleased* event);
+  void mouseButtonPressed(const sf::Event::MouseButtonPressed* event);
+  void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
 
   GameStateMachine game_state_machine;
+
 
  private:
   sf::RenderWindow& window;
   
-  sf::Texture background_texture;
-  sf::Sprite background = sf::Sprite(background_texture);
-
 };
 
 #endif // SFML_GAME_H

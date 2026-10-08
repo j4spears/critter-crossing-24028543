@@ -31,22 +31,22 @@ void GameStateMachine::Render(sf::RenderWindow& window)
 	current_state->Render(window);
 }
 
-void GameStateMachine::KeyPressed(sf::Event event)
+void GameStateMachine::KeyPressed(const sf::Event::KeyPressed* event)
 {
 	current_state->KeyPressed(event);
 }
 
-void GameStateMachine::KeyReleased(sf::Event event)
+void GameStateMachine::KeyReleased(const sf::Event::KeyReleased* event)
 {
 	current_state->KeyReleased(event);
 }
 
-void GameStateMachine::MouseButtonPressed(sf::Event event)
+void GameStateMachine::MouseButtonPressed(const sf::Event::MouseButtonPressed* event)
 {
 	current_state->MouseButtonPressed(event);
 }
 
-void GameStateMachine::MouseButtonReleased(sf::Event event)
+void GameStateMachine::MouseButtonReleased(const sf::Event::MouseButtonReleased* event)
 {
 	current_state->MouseButtonReleased(event);
 }

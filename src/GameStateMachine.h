@@ -16,10 +16,10 @@ class GameStateMachine
 	void ChangeState(std::shared_ptr<GameState> new_state);
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
-	void KeyPressed(sf::Event event);
-	void KeyReleased(sf::Event event);
-	void MouseButtonPressed(sf::Event event);
-	void MouseButtonReleased(sf::Event event);
+	void KeyPressed(const sf::Event::KeyPressed* event);
+	void KeyReleased(const sf::Event::KeyReleased* event);
+	void MouseButtonPressed(const sf::Event::MouseButtonPressed* event);
+	void MouseButtonReleased(const sf::Event::MouseButtonReleased* event);
 
 	private:
 	std::shared_ptr<GameState> current_state;

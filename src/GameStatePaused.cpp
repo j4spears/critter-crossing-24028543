@@ -24,18 +24,18 @@ void GameStatePaused::Render(sf::RenderWindow& window)
 {
 }
 
-void GameStatePaused::KeyPressed(sf::Event event)
+void GameStatePaused::KeyPressed(const sf::Event::KeyPressed* event)
 {
 }
 
-void GameStatePaused::KeyReleased(sf::Event event)
+void GameStatePaused::KeyReleased(const sf::Event::KeyReleased* event)
 {
 }
 
-void GameStatePaused::MouseButtonPressed(sf::Event event)
+void GameStatePaused::MouseButtonPressed(const sf::Event::MouseButtonPressed* event)
 {
 }
 
-void GameStatePaused::MouseButtonReleased(sf::Event event)
+void GameStatePaused::MouseButtonReleased(const sf::Event::MouseButtonReleased* event)
 {
 }

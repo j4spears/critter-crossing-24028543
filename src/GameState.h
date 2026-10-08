@@ -18,10 +18,10 @@ class GameState
 		virtual void Update(float dt);
 		virtual void ExitState();
 		virtual void Render(sf::RenderWindow& window);
-		virtual void KeyPressed(sf::Event event);
-		virtual void KeyReleased(sf::Event event);
-		virtual void MouseButtonPressed(sf::Event event);
-		virtual void MouseButtonReleased(sf::Event event);
+		virtual void KeyPressed(const sf::Event::KeyPressed* event);
+		virtual void KeyReleased(const sf::Event::KeyReleased* event);
+		virtual void MouseButtonPressed(const sf::Event::MouseButtonPressed* event);
+		virtual void MouseButtonReleased(const sf::Event::MouseButtonReleased* event);
 };
 
 #endif // SFML_GAMESTATE_H
