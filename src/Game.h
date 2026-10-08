@@ -3,6 +3,11 @@
 #define SFML_GAME_H
 
 #include <SFML/Graphics.hpp>
+#include "GameStateMachine.h"
+#include "GameStateMenu.h"
+#include "GameStateGameplay.h"
+#include "GameStatePaused.h"
+
 
 class Game
 {
@@ -16,6 +21,8 @@ class Game
   void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
   void keyPressed(const sf::Event::KeyPressed* event);
   void keyReleased(const sf::Event::KeyReleased* event);
+
+  GameStateMachine game_state_machine;
 
  private:
   sf::RenderWindow& window;
