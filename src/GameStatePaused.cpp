@@ -1,8 +1,7 @@
 #include "GameStatePaused.h"
+#include "Game.h"
 
-GameStatePaused::GameStatePaused()
-{
-}
+GameStatePaused::GameStatePaused(Game& game) : GameState(game) {}
 
 GameStatePaused::~GameStatePaused()
 {

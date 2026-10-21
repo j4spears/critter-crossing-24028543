@@ -1,8 +1,7 @@
 #include "GameStateMenu.h"
+#include "Game.h"
 
-GameStateMenu::GameStateMenu()
-{
-}
+GameStateMenu::GameStateMenu(Game& game) : GameState(game){}
 
 GameStateMenu::~GameStateMenu()
 {

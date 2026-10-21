@@ -1,6 +1,9 @@
 #include "GameState.h"
 
-GameState::GameState(){}
+#include "Game.h"
+
+
+GameState::GameState(Game& game) : game(game){}
 
 GameState::~GameState(){}
 

@@ -5,7 +5,7 @@
 
 int main()
 {
-  std::cout << "You should see a window that opens as well as this writing to console..."
+  std::cout << "Loading..."
             << std::endl;
 
   // create window and set up

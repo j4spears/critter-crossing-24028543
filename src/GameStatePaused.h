@@ -9,7 +9,7 @@
 class GameStatePaused : public GameState
 {
 	public:
-	GameStatePaused();
+	GameStatePaused(Game& game);
 	~GameStatePaused();
 	void EnterState() override;
 	void Update(float dt) override;

@@ -1,6 +1,8 @@
 #include "GameStateMachine.h"
 
-GameStateMachine::GameStateMachine()
+#include "Game.h"
+
+GameStateMachine::GameStateMachine(Game& game) : game(game)
 {
 }
 
@@ -8,9 +10,9 @@ GameStateMachine::~GameStateMachine()
 {
 }
 
-void GameStateMachine::init(std::shared_ptr<GameState> initial_state)
+void GameStateMachine::init()
 {
-	current_state = initial_state;
+	current_state = std::make_shared<GameStateMenu>(game);
 	current_state->EnterState();
 }
 

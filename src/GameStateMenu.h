@@ -8,7 +8,7 @@
 class GameStateMenu : public GameState
 {
 	public:
-	GameStateMenu();
+	GameStateMenu(Game& game);
 	~GameStateMenu();
 	void EnterState() override;
 	void Update(float dt) override;

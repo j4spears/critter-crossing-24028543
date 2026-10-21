@@ -4,9 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameStateMachine.h"
-#include "GameStateMenu.h"
-#include "GameStateGameplay.h"
-#include "GameStatePaused.h"
+
 
 
 class Game
@@ -22,7 +20,14 @@ class Game
   void mouseButtonPressed(const sf::Event::MouseButtonPressed* event);
   void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
 
-  GameStateMachine game_state_machine;
+  GameStateMachine state_machine;
+
+
+  sf::Sprite* animal;
+  sf::Sprite* passport;
+
+  sf::Texture* animals = new sf::Texture[3];
+  sf::Texture* passports = new sf::Texture[3];
 
 
  private:

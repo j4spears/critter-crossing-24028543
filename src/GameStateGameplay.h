@@ -10,7 +10,7 @@
 class GameStateGameplay : public GameState
 {
 	public:
-	GameStateGameplay();
+	GameStateGameplay(Game& game);
 	~GameStateGameplay();
 	void EnterState() override;
 	void Update(float dt) override;

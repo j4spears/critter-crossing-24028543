@@ -9,10 +9,12 @@
 #include <iostream>
 #include <utility>
 
+class Game;
+
 class GameState
 {
 	public:
-		GameState();
+		GameState(Game& game);
 		~GameState();
 		virtual void EnterState();
 		virtual void Update(float dt);
@@ -22,6 +24,9 @@ class GameState
 		virtual void KeyReleased(const sf::Event::KeyReleased* event);
 		virtual void MouseButtonPressed(const sf::Event::MouseButtonPressed* event);
 		virtual void MouseButtonReleased(const sf::Event::MouseButtonReleased* event);
+
+	protected:
+		Game& game;
 };
 
 #endif // SFML_GAMESTATE_H
