@@ -19,16 +19,14 @@ class Game
   void keyReleased(const sf::Event::KeyReleased* event);
   void mouseButtonPressed(const sf::Event::MouseButtonPressed* event);
   void mouseButtonReleased(const sf::Event::MouseButtonReleased* event);
+  sf::Vector2f getMousePositionf();
+
+  sf::RenderWindow& getWindow();
 
   GameStateMachine state_machine;
 
 
-  sf::Sprite* animal;
-  sf::Sprite* passport;
-
-  sf::Texture* animals = new sf::Texture[3];
-  sf::Texture* passports = new sf::Texture[3];
-
+  
 
  private:
   sf::RenderWindow& window;

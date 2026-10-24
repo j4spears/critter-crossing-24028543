@@ -2,27 +2,17 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(sf::RenderWindow& game_window)
-  : window(game_window), state_machine(*this)
+Game::Game(sf::RenderWindow& game_window) : window(game_window), state_machine(*this)
 {
   srand(time(NULL));
 }
 
 Game::~Game()
 {
-
 }
 
 bool Game::init()
 {
-	animals[0] = sf::Texture{ "../Data/Images/Critter Crossing/elephant.png" };
-	passports[0] = sf::Texture{ "../Data/Images/Critter Crossing/elephant passport.png" };
-
-	animals[1] = sf::Texture{ "../Data/Images/Critter Crossing/moose.png" };
-	passports[1] = sf::Texture{ "../Data/Images/Critter Crossing/moose passport.png" };
-
-	animals[2] = sf::Texture{ "../Data/Images/Critter Crossing/penguin.png" };
-	passports[2] = sf::Texture{ "../Data/Images/Critter Crossing/penguin passport.png" };
 
 	state_machine.init();
   return true;
@@ -57,4 +47,16 @@ void Game::mouseButtonPressed(const sf::Event::MouseButtonPressed* event)
 void Game::mouseButtonReleased(const sf::Event::MouseButtonReleased* event)
 {
 	state_machine.MouseButtonReleased(event);
+}
+
+sf::Vector2f Game::getMousePositionf()
+{
+	sf::Vector2i mouse_position = sf::Mouse::getPosition(getWindow());
+	sf::Vector2f mouse_positionf = static_cast<sf::Vector2f>(mouse_position);
+	return mouse_positionf;
+}
+
+sf::RenderWindow& Game::getWindow()
+{
+	return window;
 }

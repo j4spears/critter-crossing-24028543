@@ -10,6 +10,7 @@ class GameStateMenu : public GameState
 	public:
 	GameStateMenu(Game& game);
 	~GameStateMenu();
+	void InitState() override;
 	void EnterState() override;
 	void Update(float dt) override;
 	void ExitState() override;
@@ -18,10 +19,6 @@ class GameStateMenu : public GameState
 	void KeyReleased(const sf::Event::KeyReleased* event) override;
 	void MouseButtonPressed(const sf::Event::MouseButtonPressed* event) override;
 	void MouseButtonReleased(const sf::Event::MouseButtonReleased* event) override;
-
-	sf::Texture texture{ "../Data/Images/WhackaMole Worksheet/background.png" };
-	sf::Sprite temp_sprite = sf::Sprite(texture);
-	
 };
 
 #endif // SFML_GAMESTATEMENU_H

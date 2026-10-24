@@ -11,6 +11,7 @@ class GameStatePaused : public GameState
 	public:
 	GameStatePaused(Game& game);
 	~GameStatePaused();
+	void InitState() override;
 	void EnterState() override;
 	void Update(float dt) override;
 	void ExitState() override;

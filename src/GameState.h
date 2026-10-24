@@ -16,6 +16,7 @@ class GameState
 	public:
 		GameState(Game& game);
 		~GameState();
+		virtual void InitState();
 		virtual void EnterState();
 		virtual void Update(float dt);
 		virtual void ExitState();

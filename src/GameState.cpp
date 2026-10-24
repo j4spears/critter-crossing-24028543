@@ -7,6 +7,8 @@ GameState::GameState(Game& game) : game(game){}
 
 GameState::~GameState(){}
 
+void GameState::InitState(){}
+
 void GameState::EnterState(){}
 
 void GameState::Update(float dt){}

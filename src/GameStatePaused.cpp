@@ -3,38 +3,22 @@
 
 GameStatePaused::GameStatePaused(Game& game) : GameState(game) {}
 
-GameStatePaused::~GameStatePaused()
-{
-}
+GameStatePaused::~GameStatePaused(){}
 
-void GameStatePaused::EnterState()
-{
-}
+void GameStatePaused::InitState(){}
 
-void GameStatePaused::Update(float dt)
-{
-}
+void GameStatePaused::EnterState(){}
 
-void GameStatePaused::ExitState()
-{
-}
+void GameStatePaused::Update(float dt){}
 
-void GameStatePaused::Render(sf::RenderWindow& window)
-{
-}
+void GameStatePaused::ExitState(){}
 
-void GameStatePaused::KeyPressed(const sf::Event::KeyPressed* event)
-{
-}
+void GameStatePaused::Render(sf::RenderWindow& window){}
 
-void GameStatePaused::KeyReleased(const sf::Event::KeyReleased* event)
-{
-}
+void GameStatePaused::KeyPressed(const sf::Event::KeyPressed* event){}
 
-void GameStatePaused::MouseButtonPressed(const sf::Event::MouseButtonPressed* event)
-{
-}
+void GameStatePaused::KeyReleased(const sf::Event::KeyReleased* event){}
 
-void GameStatePaused::MouseButtonReleased(const sf::Event::MouseButtonReleased* event)
-{
-}
+void GameStatePaused::MouseButtonPressed(const sf::Event::MouseButtonPressed* event){}
+
+void GameStatePaused::MouseButtonReleased(const sf::Event::MouseButtonReleased* event){}

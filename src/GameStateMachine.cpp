@@ -2,22 +2,32 @@
 
 #include "Game.h"
 
-GameStateMachine::GameStateMachine(Game& game) : game(game)
-{
-}
+GameStateMachine::GameStateMachine(Game& game) : game(game){}
 
-GameStateMachine::~GameStateMachine()
-{
-}
+GameStateMachine::~GameStateMachine(){}
 
 void GameStateMachine::init()
 {
-	current_state = std::make_shared<GameStateMenu>(game);
+	states = 
+	{
+		{"MENU",std::make_shared<GameStateMenu>(game)},
+		{"GAMEPLAY",std::make_shared<GameStateGameplay>(game)},
+		{"PAUSED",std::make_shared<GameStatePaused>(game)}
+	};
+
+	for (const auto& [name, state] : states)
+	{
+		state->InitState();
+	}
+
+	previous_state = states["MENU"];
+	current_state = states["GAMEPLAY"];
 	current_state->EnterState();
 }
 
 void GameStateMachine::ChangeState(std::shared_ptr<GameState> new_state)
 {
+	previous_state = current_state;
 	current_state->ExitState();
 	current_state = new_state;
 	current_state->EnterState();
@@ -51,4 +61,9 @@ void GameStateMachine::MouseButtonPressed(const sf::Event::MouseButtonPressed* e
 void GameStateMachine::MouseButtonReleased(const sf::Event::MouseButtonReleased* event)
 {
 	current_state->MouseButtonReleased(event);
+}
+
+std::shared_ptr<GameState> GameStateMachine::getPreviousState()
+{
+	return previous_state;
 }
