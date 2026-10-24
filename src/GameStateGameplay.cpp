@@ -7,6 +7,13 @@ GameStateGameplay::~GameStateGameplay(){}
 
 void GameStateGameplay::InitState()
 {
+	font = new sf::Font();
+	font->openFromFile("../Data/Fonts/OpenSans-Bold.ttf");
+	score_text = new sf::Text(*font);
+	score_text->setString("Score: 0");
+	score_text->setCharacterSize(40);
+	score_text->setPosition(sf::Vector2f(game.getWindow().getSize().x - 200, 50));
+
 	animals[0] = sf::Texture{ "../Data/Images/Critter Crossing/elephant.png" };
 	passports[0] = sf::Texture{ "../Data/Images/Critter Crossing/elephant passport.png" };
 	animals[1] = sf::Texture{ "../Data/Images/Critter Crossing/moose.png" };
@@ -28,6 +35,22 @@ void GameStateGameplay::InitState()
 	reject_button->setPosition({ 800, 450 });
 	reject_button->setScale({ 0.5, 0.5 });
 	ui_reject = new sf::Sprite(*ui_reject_texture);
+
+	next_button = new sf::Sprite(*next_button_texture);
+	next_button->setPosition({ 440, 250 });
+	next_button->setScale({ 0.5, 0.5 });
+	ui_well_spotted = new sf::Sprite(*ui_well_spotted_texture);
+	ui_well_spotted->setPosition({ 400, 200 });
+	ui_well_spotted->setScale({ 0.5, 0.5 });
+	retry_button = new sf::Sprite(*retry_button_texture);
+	retry_button->setPosition({ 440, 240 });
+	retry_button->setScale({ 0.5, 0.5 });
+	ui_fail_match = new sf::Sprite(*ui_fail_match_texture);
+	ui_fail_match->setPosition({ 400, 200 });
+	ui_fail_match->setScale({ 0.5, 0.5 });
+	ui_fail_no_match = new sf::Sprite(*ui_fail_no_match_texture);
+	ui_fail_no_match->setPosition({ 400, 200 });
+	ui_fail_no_match->setScale({ 0.5, 0.5 });
 }
 
 void GameStateGameplay::EnterState()
@@ -61,7 +84,10 @@ void GameStateGameplay::ExitState()
 
 void GameStateGameplay::Render(sf::RenderWindow& window)
 {
+	
 	game.getWindow().draw(*background);
+	game.getWindow().draw(*animal);
+    game.getWindow().draw(*score_text);
 
 	if (!passport_returned)
 	{
@@ -75,17 +101,44 @@ void GameStateGameplay::Render(sf::RenderWindow& window)
 		{
 			game.getWindow().draw(*ui_reject);
 		}
-	}
 
-	game.getWindow().draw(*animal);
+	}
+	else
+	{
+		if (accepted == true)
+		{
+			if (match)
+			{
+				game.getWindow().draw(*next_button);
+			}
+			else
+			{
+				game.getWindow().draw(*ui_fail_no_match);
+				game.getWindow().draw(*retry_button);
+			}
+		}
+
+		if (accepted == false)
+		{
+			if (match)
+			{
+				game.getWindow().draw(*ui_fail_match);
+				game.getWindow().draw(*retry_button);
+			}
+			else
+			{
+				game.getWindow().draw(*ui_well_spotted);
+				game.getWindow().draw(*next_button);
+			}
+
+		}
+	}
 	
 	if (show_choices)
 	{
 		game.getWindow().draw(*accept_button);
 		game.getWindow().draw(*reject_button);
 	}
-	
-	
 }
 
 void GameStateGameplay::KeyPressed(const sf::Event::KeyPressed* event)
@@ -125,6 +178,23 @@ void GameStateGameplay::MouseButtonPressed(const sf::Event::MouseButtonPressed* 
 				show_choices = false;
 			}
 		}
+
+		if (next_button->getGlobalBounds().contains(click))
+		{
+			if (accepted == true && match || accepted == false && !match)
+			{
+				match = newAnimal();
+			}
+		}
+
+		if (retry_button->getGlobalBounds().contains(click))
+		{
+			if (accepted == false && match || accepted == true && !match)
+			{
+				match = newAnimal();
+				score_text->setString("Score: " + std::to_string(score));
+			}
+		}
 	}
 	else if (event->button == sf::Mouse::Button::Right)
 	{
@@ -149,6 +219,7 @@ void GameStateGameplay::MouseButtonReleased(const sf::Event::MouseButtonReleased
 				if (accepted == true && match || accepted == false && !match)
 				{
 					score++;
+					score_text->setString("Score: " + std::to_string(score));
 				}
 				else if (accepted == false && match || accepted == true && !match)
 				{

@@ -30,6 +30,11 @@ class GameStateGameplay : public GameState
 	sf::Texture* passports = new sf::Texture[3];
 	bool match;
 
+	sf::Sprite* dragged = nullptr;
+	sf::Vector2f drag_offset;
+	bool passport_returned = false;
+	void dragSprite(sf::Sprite* sprite);
+
 	sf::Sprite* background;
 	sf::Texture* bg_texture = new sf::Texture{ "../Data/Images/WhackaMole Worksheet/background.png" };
 
@@ -45,13 +50,22 @@ class GameStateGameplay : public GameState
 	bool show_choices = false;
 	std::optional<bool> accepted = std::nullopt;
 
-	sf::Sprite* dragged = nullptr;
-	sf::Vector2f drag_offset;
-	bool passport_returned = false;
-	void dragSprite(sf::Sprite* sprite);
+	sf::Sprite* next_button;
+	sf::Texture* next_button_texture = new sf::Texture{ "../Data/Images/next please ui.png" };
+	sf::Sprite* ui_well_spotted;
+	sf::Texture* ui_well_spotted_texture = new sf::Texture{ "../Data/Images/well spotted.png" };
+
+	sf::Sprite* retry_button;
+	sf::Texture* retry_button_texture = new sf::Texture{ "../Data/Images/retry.png" };
+	sf::Sprite* ui_fail_match;
+	sf::Texture* ui_fail_match_texture = new sf::Texture{ "../Data/Images/the passport was a match.png" };
+	sf::Sprite* ui_fail_no_match;
+	sf::Texture* ui_fail_no_match_texture = new sf::Texture{ "../Data/Images/you let in an imposter.png" };
 
 	int score = 0;
 	int session_high_score;
+	sf::Font* font;
+	sf::Text* score_text = new sf::Text(*font);
 };
 
 #endif // SFML_GAMESTATEGAMEPLAY_H
